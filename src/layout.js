@@ -8,8 +8,8 @@ import 'react-time-picker/dist/TimePicker.css';
 import SemanticDatepicker from 'react-semantic-ui-datepickers';
 import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
 import Display from "./display";
-//import {useNavigate} from 'react-router-dom';
-
+import axios from "axios";
+import DisplayFetchedData from "./dataFetch";
 
 const  Layout = () =>{
     const initialDetails ={
@@ -21,17 +21,24 @@ const  Layout = () =>{
         startTime:"",
         endTime:""
     }
+    const [inputId, setInputId] = useState('');
 
     const [details, setDetails] = useState(initialDetails);
     const [submitted, setSubmitted] = useState(false);
-
-    // const history = useNavigate();
-
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
       event.preventDefault();
       setSubmitted(true);
-      // history('/details',{state : {details}})
+      
+    
+      try {
+        await axios.post('http://localhost:3030/Data', details);
+        console.log("Data sent successfully!");
+        // clearForm();
+      } catch (error) {
+        console.error("Error sending data: ", error);
+      }
     };
+  
 
     const isFormInvalid = () => {
       return (
@@ -45,6 +52,10 @@ const  Layout = () =>{
       );
     };
 
+    // const handleFetchData = () => {
+    //   fetchDataFromAPI();
+    // };
+    
     const clearForm = () => {
       setDetails(initialDetails)
     };
@@ -59,8 +70,8 @@ const  Layout = () =>{
     return(
         <div className="App">
             {!submitted ? (<Container>
-                <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
-                    <Grid.Column style={{maxWidth : 450}}>
+                <Grid textAlign='center' style={{ height: '100vh' }} >
+                    <Grid.Column verticalAlign='middle' style={{maxWidth : 450}}>
                       <Header as='h2' color='teal' textAlign='center'>
                         Fill the Below details
                       </Header>
@@ -151,13 +162,34 @@ const  Layout = () =>{
                             <div id='valid'></div>
                             <Button color='teal' size='large' disabled={isFormInvalid()}>Submit</Button>
                             <Button color="grey" size="large" onClick={clearForm}>clear</Button>
+                            {/* <Button color='teal' size='large' onClick={handleFetchData}>Fetch Data</Button> */}
+                            
                           </Segment>
                         </Form>
                     </Grid.Column>
                 </Grid>
-            </Container>)
+            </Container>
+            )
+            
             : (<Display details={details} />)}
+            <Grid  textAlign="center" style={{ height: '100vh'}} verticalAlign="middle">
+            <Grid.Column  style={{ maxWidth: 450 }}>
+              <h2>Fetch the Details</h2>       
+              <Input
+                type="text"
+                value={inputId}
+                onChange={(e) => setInputId(e.target.value)}
+                placeholder="Enter ID "
+                required
+              />
+              <Button onClick={() => <DisplayFetchedData inputId={inputId} />}>Fetch Data</Button>
+
+              {/* Display fetched data */}
+              <DisplayFetchedData inputId={inputId} />
+            </Grid.Column>
+          </Grid>
         </div>
+        
     )
 }
 
