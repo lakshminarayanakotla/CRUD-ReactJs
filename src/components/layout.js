@@ -11,6 +11,8 @@ import Display from "./display";
 import axios from "axios";
 // import DisplayFetchedData from "./dataFetch";
 import {Link} from "react-router-dom";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const  Layout = () =>{
     const initialDetails ={
@@ -29,7 +31,7 @@ const  Layout = () =>{
     const handleSubmit = async (event) => {
       event.preventDefault();
       setSubmitted(true);
-      
+      toast.success("Your data inserted successfully..",{autoClose : 1000});
     
       try {
         await axios.post('http://localhost:3030/Data', details);
@@ -87,7 +89,7 @@ const  Layout = () =>{
               </Container>
             </Segment>
             {!submitted ? (<Container>
-                <Grid textAlign='center' style={{ height: '100vh' }} >
+                <Grid textAlign='center' style={{ height: '90vh' }} >
                     <Grid.Column verticalAlign='middle' style={{maxWidth : 450}}>
                       <Header as='h2' color='teal' textAlign='center'>
                         Fill the Below details

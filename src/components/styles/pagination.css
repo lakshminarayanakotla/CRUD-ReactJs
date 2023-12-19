@@ -1,0 +1,11 @@
+/* PaginationStyles.css */
+.custom-pagination .item {
+    background-color: teal; /* Change this to your desired background color */
+    color: white; /* Change the text color to make it visible on the background */
+  }
+  
+  .custom-pagination .active.item {
+    background-color: darkcyan; /* Change the background color of the active page */
+    color: white; /* Change the text color for the active page */
+  }
+  

@@ -14,7 +14,7 @@ const Fetch = () => {
             </Segment>
         <Grid  textAlign="center" style={{ height: '80vh'}} verticalAlign="middle">
             <Grid.Column  style={{ maxWidth: 750 }}>
-              <h2>Fetch the Details</h2>       
+              <h2>Fetch the Details</h2>   
               <Input
                 type="text"
                 value={inputId}
@@ -22,7 +22,7 @@ const Fetch = () => {
                 placeholder="Enter ID "
                 required
               />
-              <Button onClick={() => <DisplayFetchedData inputId={inputId} />}>Fetch Data</Button>
+              <Button onClick={() => <DisplayFetchedData inputId={inputId} />}>Fetch Data</Button><br></br> <br></br><br></br>
 
               {/* Display fetched data */}
               <DisplayFetchedData inputId={inputId} />

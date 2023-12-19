@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Table } from 'semantic-ui-react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const formatDate = (date) => {
   const d = new Date(date);
@@ -19,7 +21,7 @@ const DisplayFetchedData = ({ inputId }) => {
         if (inputId) {
           const response = await axios.get(`http://localhost:3030/Data/${inputId}`);
           setDisplayedData([response.data]);
-          console.log('Data Fetched successfully');
+          toast.success("Data Fetched Successfully",{autoClose: 500});
         } else {
           const fetchDataResponse = await axios.get('http://localhost:3030/Data');
           const firstItem = fetchDataResponse.data[0];
@@ -27,9 +29,9 @@ const DisplayFetchedData = ({ inputId }) => {
         }
       } catch (error) {
         if (error.response && error.response.status === 404) {
-          window.alert('ID not in the database');
+          toast.error("ID not in the database",{autoClose : 500});
         } else {
-          console.error('Error:', error);
+          toast.error(error,{autoClose : 500});
           throw new Error('Error fetching data');
         }
       }

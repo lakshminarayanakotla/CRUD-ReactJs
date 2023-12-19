@@ -5,10 +5,13 @@ import Display from "./components/display";
 import Fetch from "./components/updatePage";
 import DisplayFetchedData from "./components/dataFetch";
 import TotalData from "./components/totalData";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
 
   return (
+    <div>
       <Router>
       <Routes>
         <Route path="/" element={<Layout/>}></Route>
@@ -18,6 +21,8 @@ const App = () => {
         <Route path="/totalData" element={<TotalData/>} ></Route>
       </Routes>
     </Router>
+    <ToastContainer/>
+    </div>
   );
 };
 

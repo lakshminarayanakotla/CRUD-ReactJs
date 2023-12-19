@@ -84,15 +84,18 @@ const TotalData = () =>{
             
             <Grid textAlign="center" verticalAlign="middle"> 
                 <Grid.Column>
-                    <Pagination
+                  <Pagination
                         activePage={currentPage}
                         onPageChange={handlePaginationChange}
+                        pointing
+                        secondary
                         ellipsisItem={{ content: <Icon name='ellipsis horizontal' />, icon: true }}
                         firstItem={{ content: <Icon name='angle double left' />, icon: true }}
                         lastItem={{ content: <Icon name='angle double right' />, icon: true }}
                         prevItem={{ content: <Icon name='angle left' />, icon: true }}
                         nextItem={{ content: <Icon name='angle right' />, icon: true }}
                         totalPages={totalPages}
+                        color="red"
                     />
                 </Grid.Column>
             </Grid>

@@ -1,5 +1,7 @@
 import React, { useState , useEffect} from 'react';
 import { Table, Grid, Message, Segment, Header, Container } from 'semantic-ui-react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 //import axios from 'axios';
 
 const formatDate = (date) => {
@@ -11,36 +13,18 @@ const formatDate = (date) => {
 };
 
 const Display = ({ details }) => {
-  // const [inputId, setInputId] = useState('');
-  // const [displayedData, setDisplayedData] = useState(null);
 
-  const [showMessage, setShowMessage] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowMessage(false);
-    }, 300);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
+  // useEffect(() => {
+  //   toast.success("Your data inserted successfully..")
+  // }, []);
 
   const formattedDate = details.selectDate ? formatDate(details.selectDate) : '';
 
   return (
     <>
-    {/* <Segment inverted color='teal' vertical>
-      <Container>
-        <Header as="h1">Your submiited data is..</Header>
-      </Container>
-    </Segment> */}
     <div>
       <Grid textAlign='center' style={{ height: '80vh' }} verticalAlign="middle" >
         <Grid.Column style={{ maxWidth: 450 }}>
-        {showMessage && <Message positive>
-          <Message.Header>You are data inserted successfully</Message.Header>
-        </Message>}
           <h2>Submitted Details</h2>
           <Table color="blue" key="blue">
             <Table.Body>
