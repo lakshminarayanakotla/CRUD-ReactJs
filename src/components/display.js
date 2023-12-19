@@ -1,6 +1,6 @@
 import React, { useState , useEffect} from 'react';
-import { Table, Grid, Message } from 'semantic-ui-react';
-import axios from 'axios';
+import { Table, Grid, Message, Segment, Header, Container } from 'semantic-ui-react';
+//import axios from 'axios';
 
 const formatDate = (date) => {
   const d = new Date(date);
@@ -11,15 +11,15 @@ const formatDate = (date) => {
 };
 
 const Display = ({ details }) => {
-  const [inputId, setInputId] = useState('');
-  const [displayedData, setDisplayedData] = useState(null);
+  // const [inputId, setInputId] = useState('');
+  // const [displayedData, setDisplayedData] = useState(null);
 
   const [showMessage, setShowMessage] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowMessage(false);
-    }, 2000);
+    }, 300);
 
     return () => {
       clearTimeout(timer);
@@ -30,8 +30,13 @@ const Display = ({ details }) => {
 
   return (
     <>
+    {/* <Segment inverted color='teal' vertical>
+      <Container>
+        <Header as="h1">Your submiited data is..</Header>
+      </Container>
+    </Segment> */}
     <div>
-      <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign="middle" >
+      <Grid textAlign='center' style={{ height: '80vh' }} verticalAlign="middle" >
         <Grid.Column style={{ maxWidth: 450 }}>
         {showMessage && <Message positive>
           <Message.Header>You are data inserted successfully</Message.Header>
@@ -79,7 +84,6 @@ const Display = ({ details }) => {
               </Table.Row>
             </Table.Body>
           </Table>
-          {/* Button to trigger the operation */}
           
         </Grid.Column>
       </Grid>

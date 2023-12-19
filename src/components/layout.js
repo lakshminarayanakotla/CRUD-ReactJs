@@ -1,15 +1,16 @@
 import React from "react";
 import { useState} from "react";
-import { Container, Button, Form, Grid, Header, Label, Input, Message, Segment } from 'semantic-ui-react'
-import DatePicker from 'react-datepicker';
+import { Container, Button, Form, Grid, Header, Label, Input, Segment } from 'semantic-ui-react'
+// import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import TimePicker from 'react-time-picker';
+// import TimePicker from 'react-time-picker';
 import 'react-time-picker/dist/TimePicker.css';
 import SemanticDatepicker from 'react-semantic-ui-datepickers';
 import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
 import Display from "./display";
 import axios from "axios";
-import DisplayFetchedData from "./dataFetch";
+// import DisplayFetchedData from "./dataFetch";
+import {Link} from "react-router-dom";
 
 const  Layout = () =>{
     const initialDetails ={
@@ -21,7 +22,7 @@ const  Layout = () =>{
         startTime:"",
         endTime:""
     }
-    const [inputId, setInputId] = useState('');
+    
 
     const [details, setDetails] = useState(initialDetails);
     const [submitted, setSubmitted] = useState(false);
@@ -69,6 +70,22 @@ const  Layout = () =>{
     ]
     return(
         <div className="App">
+            <Segment inverted color="teal" vertical>
+              <Container>
+                <Grid columns={2} verticalAlign="middle" stackable>
+                  <Grid.Column>
+                    <Header as="h1">Welcome</Header>
+                  </Grid.Column>
+                  <Grid.Column textAlign="right">
+                    <Button.Group>
+                      <Button as={Link} to="/fetch">Fetch Data</Button>
+                      <Button.Or ></Button.Or>
+                      <Button as={Link} to="/totalData">TotalData</Button>
+                    </Button.Group>
+                  </Grid.Column>
+                </Grid>
+              </Container>
+            </Segment>
             {!submitted ? (<Container>
                 <Grid textAlign='center' style={{ height: '100vh' }} >
                     <Grid.Column verticalAlign='middle' style={{maxWidth : 450}}>
@@ -166,30 +183,13 @@ const  Layout = () =>{
                             
                           </Segment>
                         </Form>
+                        
                     </Grid.Column>
                 </Grid>
             </Container>
-            )
-            
+            )           
             : (<Display details={details} />)}
-            <Grid  textAlign="center" style={{ height: '100vh'}} verticalAlign="middle">
-            <Grid.Column  style={{ maxWidth: 450 }}>
-              <h2>Fetch the Details</h2>       
-              <Input
-                type="text"
-                value={inputId}
-                onChange={(e) => setInputId(e.target.value)}
-                placeholder="Enter ID "
-                required
-              />
-              <Button onClick={() => <DisplayFetchedData inputId={inputId} />}>Fetch Data</Button>
-
-              {/* Display fetched data */}
-              <DisplayFetchedData inputId={inputId} />
-            </Grid.Column>
-          </Grid>
-        </div>
-        
+        </div>     
     )
 }
 
