@@ -7,7 +7,7 @@ import DisplayFetchedData from "./components/dataFetch";
 import TotalData from "./components/totalData";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import DeleteData from "./components/deleteData";
 const App = () => {
 
   return (
@@ -19,6 +19,7 @@ const App = () => {
         <Route path="/fetch" element={<Fetch/>}></Route>
         <Route path="/displayfetch" element={<DisplayFetchedData/>}></Route>
         <Route path="/totalData" element={<TotalData/>} ></Route>
+        <Route path="/deleteData" element={<DeleteData/>}></Route>
       </Routes>
     </Router>
     <ToastContainer/>

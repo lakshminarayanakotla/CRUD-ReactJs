@@ -13,6 +13,7 @@ import axios from "axios";
 import {Link} from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import DeleteData from "./deleteData";
 
 const  Layout = () =>{
     const initialDetails ={
@@ -82,7 +83,9 @@ const  Layout = () =>{
                     <Button.Group>
                       <Button as={Link} to="/fetch">Fetch Data</Button>
                       <Button.Or ></Button.Or>
-                      <Button as={Link} to="/totalData">TotalData</Button>
+                      <Button as={Link} to="/totalData">Total Data</Button>
+                      <Button.Or></Button.Or>
+                      <Button as={Link} to="/deleteData">Delete Data</Button>
                     </Button.Group>
                   </Grid.Column>
                 </Grid>

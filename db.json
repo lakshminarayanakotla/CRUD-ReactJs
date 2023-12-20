@@ -1,26 +1,6 @@
 {
   "Data": [
     {
-      "username": "Lakshminarayana",
-      "phone": "9392790379",
-      "age": "21",
-      "gender": "Male",
-      "selectDate": "2023-12-13T18:30:00.000Z",
-      "startTime": "12:23",
-      "endTime": "13:23",
-      "id": 2
-    },
-    {
-      "username": "Lakshminarayanakotla ",
-      "phone": "9392790399",
-      "age": "22",
-      "gender": "Male",
-      "selectDate": "2023-12-13T18:30:00.000Z",
-      "startTime": "12:29",
-      "endTime": "13:29",
-      "id": 3
-    },
-    {
       "username": "abcd",
       "phone": "9876234",
       "age": "12",
