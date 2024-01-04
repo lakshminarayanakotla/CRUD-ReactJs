@@ -37,8 +37,10 @@ const DisplayFetchedData = ({ inputId }) => {
       }
     };
 
-    fetchDataByIdOrFirst(); // Fetch data when inputId changes
-  }, [inputId]); // Fetch data on component mount
+    if (inputId) {
+      fetchDataByIdOrFirst();
+    } 
+  }, [inputId]);
 
   return (
     <div>
